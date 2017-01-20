@@ -454,7 +454,7 @@ namespace BombsAway
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (GameOn)
+            if (GameOn  || label_Dead.Text == "Paused, press P to Continue")     \\Dylan G. Fix Walk Animation after pause
             {
                 switch (e.KeyCode)
                 {
