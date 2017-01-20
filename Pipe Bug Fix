@@ -1,0 +1,8 @@
+# BombsAway
+
+// Added between lines 584 & 585
+ if (Bomb.Top < pb_Pipe.Top && Bomb.Top > pb_Block1.Top && pb_NPC1.Left < pb_Pipe.Left && pb_NPC2.Left > pb_Pipe.Left && pb_Player.Top > pb_Block1.Top && pb_Player.Left > pb_NPC2.Left )
+                                {
+                                    Dead();
+
+                                }
