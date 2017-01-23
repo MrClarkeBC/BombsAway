@@ -548,6 +548,12 @@ namespace BombsAway
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height < WorldFrame.Height - 2 && !Collision_Top(pb_Player))
             {   //If Player doesnt jump, Location is above the floor or is standing on object
                 pb_Player.Top += Speed_Fall; //Player falls
+
+                if (LastDirRight == true) //Fixes jump animation stays when landed Nate Troksa
+                    pb_Player.Image = Character.stand_r;
+
+                else
+                    pb_Player.Image = Character.stand_l;
             }
 
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height > WorldFrame.Height - 1)
@@ -853,6 +859,11 @@ namespace BombsAway
             DebugMenu[8] = this.debug_MSpeed;
             NPC[0] = pb_NPC1;
             NPC[1] = pb_NPC2;
+        }
+
+        private void WorldFrame_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

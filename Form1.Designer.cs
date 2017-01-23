@@ -93,6 +93,7 @@
             this.WorldFrame.Name = "WorldFrame";
             this.WorldFrame.Size = new System.Drawing.Size(656, 241);
             this.WorldFrame.TabIndex = 0;
+            this.WorldFrame.Paint += new System.Windows.Forms.PaintEventHandler(this.WorldFrame_Paint);
             // 
             // contextMenuStrip1
             // 
