@@ -247,6 +247,7 @@ namespace BombsAway
         {
             if (!GodMode)   // Unless you're a god :D
             {
+                //Just disable these for godmode! -Zach
                 pb_Player.Visible = false;
                 label_Dead.Visible = true;
                 GameOn = false;
