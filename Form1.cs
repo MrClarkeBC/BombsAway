@@ -408,6 +408,43 @@ namespace BombsAway
                         }
                     }
                     break;
+                case Keys.A:                 // On Left Keypress down
+                    if (GameOn)
+                    {
+                        LastDirRight = false;   //For the animation, stand right or left
+                        Player_Left = true;     //Walk left
+                    }
+                    break;
+                case Keys.D:              // On Right Keypress down
+                    if (GameOn)
+                    {
+                        LastDirRight = true;
+                        Player_Right = true;
+                    }
+                    break;
+                case Keys.W:    // On Space Keypress down
+                    if (label_Dead.Visible && !label_Dead.Text.Contains("Paused"))
+                    {               // If pressed Space and the death label is shown
+                        Reset();    //Reset the game
+                    }
+                    else
+                    {
+                        if (!Player_Jump && !InAirNoCollision(pb_Player))
+                        {   //Anti multijump - If the player doesnt jump, is in the air and not colliding with anything
+                            if (LastDirRight)       //Checks direction, changes jump image
+                            {
+                                pb_Player.Image = Character.jump_r;
+                            }
+                            else
+                            {
+                                pb_Player.Image = Character.jump_l;
+                            }
+                            pb_Player.Top -= Speed_Jump;     //Player moves up a bit
+                            Force = Gravity;        //Force to be moved up changes
+                            Player_Jump = true;     //Sets a variable that player is jumping
+                        }
+                    }
+                    break;
             }
         }
 
