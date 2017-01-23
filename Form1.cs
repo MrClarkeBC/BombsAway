@@ -92,13 +92,10 @@ namespace BombsAway
                 {
                     PictureBox temp1 = new PictureBox();    //Creates a single pixel above the target picturebox, asks if anything is colliding with it
                     temp1.Bounds = ob.Bounds;
-                    // PaintBox(temp1.Location.X, temp1.Location.Y - 1, temp1.Width, 1, Color.Blue); //Super laggy doing this, troubleshooting only
+                    //PaintBox(temp1.Location.X, temp1.Location.Y - 1, temp1.Width, 1, Color.Blue); //Super laggy doing this, troubleshooting only
                     temp1.SetBounds(temp1.Location.X - 3, temp1.Location.Y - 1, temp1.Width + 6, 1);
                     if (tar.Bounds.IntersectsWith(temp1.Bounds))
-                    {
-                        
                         return true;
-                    }
                 }
             }
             return false;
@@ -148,7 +145,6 @@ namespace BombsAway
                     //PaintBox(temp2.Location.X + temp2.Width, temp2.Location.Y + 1, 1, temp2.Height - 1, Color.Yellow); //Super laggy doing this, troubleshooting only
                     temp2.SetBounds(temp2.Location.X + temp2.Width, temp2.Location.Y + 1, 1, temp2.Height - 1);
                     if (tar.Bounds.IntersectsWith(temp2.Bounds))
-                        
                         return true;
                 }
             }
@@ -354,13 +350,12 @@ namespace BombsAway
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
-            { 
-            //Ben Teel: Made sure the Game has to be on to jump, add points, and lower your character
-                case Keys.Z: if (GameOn) {
-                    Score += 120; }
+            {
+                case Keys.Z:
+                    Score += 120;
                     break;
-                case Keys.X: if (GameOn) {
-                    pb_Player.Top+=3; }
+                case Keys.X:
+                    pb_Player.Top+=3;
                     break;
                 case Keys.P:                    // On P Keypress down
                     if (GameOn)
@@ -397,43 +392,6 @@ namespace BombsAway
                     }
                     else
                     {
-                        if (!Player_Jump && !InAirNoCollision(pb_Player) && GameOn)
-                        {   //Anti multijump - If the player doesnt jump, is in the air and not colliding with anything
-                            if (LastDirRight)       //Checks direction, changes jump image
-                            {
-                                pb_Player.Image = Character.jump_r;
-                            }
-                            else
-                            {
-                                pb_Player.Image = Character.jump_l;
-                            }
-                            pb_Player.Top -= Speed_Jump;     //Player moves up a bit
-                            Force = Gravity;        //Force to be moved up changes
-                            Player_Jump = true;     //Sets a variable that player is jumping
-                        }
-                    }
-                    break;
-                case Keys.A:                 // On Left Keypress down
-                    if (GameOn)
-                    {
-                        LastDirRight = false;   //For the animation, stand right or left
-                        Player_Left = true;     //Walk left
-                    }
-                    break;
-                case Keys.D:              // On Right Keypress down
-                    if (GameOn)
-                    {
-                        LastDirRight = true;
-                        Player_Right = true;
-                    }
-                    break;
-                case Keys.W:    // On Space Keypress down
-                    if (label_Dead.Visible && !label_Dead.Text.Contains("Paused"))
-                    {               // If pressed Space and the death label is shown
-                        Reset();    //Reset the game
-                    }
-                    else
-                    {
                         if (!Player_Jump && !InAirNoCollision(pb_Player))
                         {   //Anti multijump - If the player doesnt jump, is in the air and not colliding with anything
                             if (LastDirRight)       //Checks direction, changes jump image
@@ -455,7 +413,7 @@ namespace BombsAway
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (GameOn  || label_Dead.Text == "Paused, press P to Continue")     \\Dylan G. Fix Walk Animation after pause
+            if (GameOn)
             {
                 switch (e.KeyCode)
                 {
@@ -465,16 +423,6 @@ namespace BombsAway
                         Player_Left = false;                    //Doesnt move left anymore
                         break;
                     case Keys.Right:
-                        pb_Player.Image = Character.stand_r;
-                        LastDirRight = true;
-                        Player_Right = false;
-                        break;
-                    case Keys.A:                             //On Left Key press UP
-                        pb_Player.Image = Character.stand_l;    //Players image changes to stand
-                        LastDirRight = false;                   //Last move was to the left
-                        Player_Left = false;                    //Doesnt move left anymore
-                        break;
-                    case Keys.D:
                         pb_Player.Image = Character.stand_r;
                         LastDirRight = true;
                         Player_Right = false;
@@ -600,12 +548,6 @@ namespace BombsAway
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height < WorldFrame.Height - 2 && !Collision_Top(pb_Player))
             {   //If Player doesnt jump, Location is above the floor or is standing on object
                 pb_Player.Top += Speed_Fall; //Player falls
-                
-               
-                if (LastDirRight == true || Player_Right == true) //changes jump animation to stand animation
-                    pb_Player.Image = Character.stand_r;
-                else 
-                    pb_Player.Image = Character.stand_l;
             }
 
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height > WorldFrame.Height - 1)
@@ -647,7 +589,7 @@ namespace BombsAway
                                 }
                                 if (OutsideWorldFrame(Bomb))
                                 {   //If the Rocket going left is out of frame, it gets removed
-                                   Bombs[x] = null;
+                                    Bombs[x] = null;
                                     Bomb.Dispose();
                                     DebugLog += DateTime.Now + ": Removed rocket at " + x + "\n";
                                 }   ///Otherwise, any rocket going on the ground gets removed
@@ -763,11 +705,11 @@ namespace BombsAway
                                 pbL.Image = Enemy.Rocket_L;
                                 if (rng.Next(1, 3) == 1)
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 205);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 205);
                                 }
                                 else
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 151);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 151);
                                 }
                                 WorldFrame.Controls.Add(pbL);
                                 Bombs[NextBomb(Bombs)] = pbL;
