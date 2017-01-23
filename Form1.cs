@@ -392,7 +392,7 @@ namespace BombsAway
                     }
                     else
                     {
-                        if (!Player_Jump && !InAirNoCollision(pb_Player))
+                        if (!Player_Jump && !InAirNoCollision(pb_Player) && GameOn == true)
                         {   //Anti multijump - If the player doesnt jump, is in the air and not colliding with anything
                             if (LastDirRight)       //Checks direction, changes jump image
                             {
