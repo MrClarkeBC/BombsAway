@@ -247,6 +247,7 @@ namespace BombsAway
         {
             if (!GodMode)   // Unless you're a god :D
             {
+                //Just disable these for godmode! -Zach
                 pb_Player.Visible = false;
                 label_Dead.Visible = true;
                 GameOn = false;
@@ -548,6 +549,11 @@ namespace BombsAway
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height < WorldFrame.Height - 2 && !Collision_Top(pb_Player))
             {   //If Player doesnt jump, Location is above the floor or is standing on object
                 pb_Player.Top += Speed_Fall; //Player falls
+                
+                if (LastDirRight == true) //Fixes jump animation stays when landed Nate Troksa
+                    pb_Player.Image = Character.stand_r;
+                else
+                    pb_Player.Image = Character.stand_l;
             }
 
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height > WorldFrame.Height - 1)
