@@ -705,11 +705,11 @@ namespace BombsAway
                                 pbL.Image = Enemy.Rocket_L;
                                 if (rng.Next(1, 3) == 1)
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 205);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 205);
                                 }
                                 else
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 151);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 151);
                                 }
                                 WorldFrame.Controls.Add(pbL);
                                 Bombs[NextBomb(Bombs)] = pbL;
@@ -853,6 +853,11 @@ namespace BombsAway
             DebugMenu[8] = this.debug_MSpeed;
             NPC[0] = pb_NPC1;
             NPC[1] = pb_NPC2;
+        }
+
+        private void WorldFrame_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
