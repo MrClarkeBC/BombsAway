@@ -355,11 +355,15 @@ namespace BombsAway
         {
             switch (e.KeyCode)
             {
-                case Keys.Z:
-                    Score += 120;
+                case Keys.Z: if (GameOn)
+                    {
+                        Score += 120;
+                    }
                     break;
-                case Keys.X:
-                    pb_Player.Top+=3;
+                case Keys.X: if (GameOn)
+                    {
+                        pb_Player.Top += 3;
+                    }
                     break;
                 case Keys.P:                    // On P Keypress down
                     if (GameOn)
@@ -396,7 +400,7 @@ namespace BombsAway
                     }
                     else
                     {
-                        if (!Player_Jump && !InAirNoCollision(pb_Player))
+                        if (!Player_Jump && !InAirNoCollision(pb_Player) && GameOn)
                         {   //Anti multijump - If the player doesnt jump, is in the air and not colliding with anything
                             if (LastDirRight)       //Checks direction, changes jump image
                             {
