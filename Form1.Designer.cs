@@ -152,9 +152,9 @@
             this.label_Dead.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Dead.Location = new System.Drawing.Point(236, 113);
             this.label_Dead.Name = "label_Dead";
-            this.label_Dead.Size = new System.Drawing.Size(187, 13);
+            this.label_Dead.Size = new System.Drawing.Size(91, 13);
             this.label_Dead.TabIndex = 1;
-            this.label_Dead.Text = "You died, press Space to start";
+            this.label_Dead.Text = "I Am Seans Son";
             this.label_Dead.Visible = false;
             // 
             // pb_Block1
