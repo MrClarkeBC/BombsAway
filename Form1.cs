@@ -917,7 +917,7 @@ namespace BombsAway
 
         private void WorldFrame_Paint(object sender, PaintEventArgs e)
         {
-
+//you cant prove SQUAT
         }
     }
     //sdf
