@@ -15,7 +15,7 @@ namespace BombsAway
     {
         public Form1()
         {
-            //Emily's comment GET WRECKED
+            //Sean loves Me
             InitializeComponent();
         }
         #region Credits
