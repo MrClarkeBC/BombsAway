@@ -846,6 +846,7 @@ namespace BombsAway
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //tftfftf
             Reset();
             WorldObjects[0] = pb_Pipe;
             WorldObjects[1] = pb_Block1;
