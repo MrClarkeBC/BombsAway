@@ -15,7 +15,7 @@ namespace BombsAway
     {
         public Form1()
         {
-            //Sean loves Me
+            //Dakota Was Here
             InitializeComponent();
         }
         #region Credits
