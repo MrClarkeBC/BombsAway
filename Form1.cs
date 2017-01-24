@@ -15,7 +15,7 @@ namespace BombsAway
     {
         public Form1()
         {
-            //Elijah's Comment ╙æ╞
+            //Elijah's Comment 
             InitializeComponent();
         }
         #region Credits
