@@ -21,7 +21,8 @@ namespace BombsAway
         /*
          *          - Robert Hydén -
          *          stackoverflow.com
-         */
+         
+             */
         #endregion
         #region Vars
         PictureBox[] Bombs = new PictureBox[10];
