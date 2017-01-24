@@ -15,7 +15,7 @@ namespace BombsAway
     {
         public Form1()
         {
-            //Elijah's Comment ╙æ╞
+            //Emily's comment GET WRECKED
             InitializeComponent();
         }
         #region Credits
@@ -910,6 +910,11 @@ namespace BombsAway
             DebugMenu[8] = this.debug_MSpeed;
             NPC[0] = pb_NPC1;
             NPC[1] = pb_NPC2;
+        }
+
+        private void WorldFrame_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
