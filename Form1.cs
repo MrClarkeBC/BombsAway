@@ -790,7 +790,7 @@ namespace BombsAway
             if (!label_Dead.Visible)
             {
                 Score++;
-                BombSize++;
+                //BombSize++; Brian: Keeps bomb size the same so it does not go off the map
                 if (timer_Randombomb.Interval > 1)
                 {
                     timer_Randombomb.Interval--;
