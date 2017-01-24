@@ -746,7 +746,7 @@ namespace BombsAway
                                 }
                                 else
                                 {
-                                    pbR.Location = new System.Drawing.Point(1, 124);
+                                    pbR.Location = new System.Drawing.Point(1, 110);
                                 }
                                 WorldFrame.Controls.Add(pbR);
                                 Bombs[NextBomb(Bombs)] = pbR;
