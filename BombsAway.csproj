@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bomb.ico" />
+    <None Include="Resources\636001135964333349-Harambe2.jpg" />
     <None Include="Resources\Platform.png" />
     <None Include="Resources\Enemy-right.png" />
     <None Include="Resources\Enemy-left.png" />
