@@ -762,11 +762,11 @@ namespace BombsAway
                                 pbL.Image = Enemy.Rocket_L;
                                 if (rng.Next(1, 3) == 1)
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 205);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 205);
                                 }
                                 else
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 151);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 151);
                                 }
                                 WorldFrame.Controls.Add(pbL);
                                 Bombs[NextBomb(Bombs)] = pbL;
