@@ -416,7 +416,6 @@ namespace BombsAway
                         }
                     }
                     break;
-                    break;
                 case Keys.A:                 // On Left Keypress down
                     if (GameOn)
                     {
