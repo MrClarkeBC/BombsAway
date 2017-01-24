@@ -15,7 +15,7 @@ namespace BombsAway
     {
         public Form1()
         {
-            //sfsdfsdfs
+            //Sean loves Me
             InitializeComponent();
         }
         #region Credits
@@ -416,12 +416,50 @@ namespace BombsAway
                         }
                     }
                     break;
+                    break;
+                case Keys.A:                 // On Left Keypress down
+                    if (GameOn)
+                    {
+                        LastDirRight = false;   //For the animation, stand right or left
+                        Player_Left = true;     //Walk left
+                    }
+                    break;
+                case Keys.D:              // On Right Keypress down
+                    if (GameOn)
+                    {
+                        LastDirRight = true;
+                        Player_Right = true;
+                    }
+                    break;
+                case Keys.W:    // On Space Keypress down
+                    if (label_Dead.Visible && !label_Dead.Text.Contains("Paused"))
+                    {               // If pressed Space and the death label is shown
+                        Reset();    //Reset the game
+                    }
+                    else
+                    {
+                        if (!Player_Jump && !InAirNoCollision(pb_Player))
+                        {   //Anti multijump - If the player doesnt jump, is in the air and not colliding with anything
+                            if (LastDirRight)       //Checks direction, changes jump image
+                            {
+                                pb_Player.Image = Character.jump_r;
+                            }
+                            else
+                            {
+                                pb_Player.Image = Character.jump_l;
+                            }
+                            pb_Player.Top -= Speed_Jump;     //Player moves up a bit
+                            Force = Gravity;        //Force to be moved up changes
+                            Player_Jump = true;     //Sets a variable that player is jumping
+                        }
+                    }
+                    break;
             }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (GameOn)
+            if (GameOn || label_Dead.Text == "Paused, press P to Continue")
             {
                 switch (e.KeyCode)
                 {
@@ -431,6 +469,16 @@ namespace BombsAway
                         Player_Left = false;                    //Doesnt move left anymore
                         break;
                     case Keys.Right:
+                        pb_Player.Image = Character.stand_r;
+                        LastDirRight = true;
+                        Player_Right = false;
+                        break;
+                    case Keys.A:                             //On Left Key press UP
+                        pb_Player.Image = Character.stand_l;    //Players image changes to stand
+                        LastDirRight = false;                   //Last move was to the left
+                        Player_Left = false;                    //Doesnt move left anymore
+                        break;
+                    case Keys.D:
                         pb_Player.Image = Character.stand_r;
                         LastDirRight = true;
                         Player_Right = false;
@@ -556,7 +604,7 @@ namespace BombsAway
             if (!Player_Jump && pb_Player.Location.Y + pb_Player.Height < WorldFrame.Height - 2 && !Collision_Top(pb_Player))
             {   //If Player doesnt jump, Location is above the floor or is standing on object
                 pb_Player.Top += Speed_Fall; //Player falls
-                
+
                 if (LastDirRight == true) //Fixes jump animation stays when landed Nate Troksa
                     pb_Player.Image = Character.stand_r;
                 else
@@ -702,7 +750,7 @@ namespace BombsAway
                                 }
                                 else
                                 {
-                                    pbR.Location = new System.Drawing.Point(1, 124);
+                                    pbR.Location = new System.Drawing.Point(1, 110);
                                 }
                                 WorldFrame.Controls.Add(pbR);
                                 Bombs[NextBomb(Bombs)] = pbR;
@@ -718,11 +766,11 @@ namespace BombsAway
                                 pbL.Image = Enemy.Rocket_L;
                                 if (rng.Next(1, 3) == 1)
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 205);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 205);
                                 }
                                 else
                                 {
-                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width + 30, 151);
+                                    pbL.Location = new System.Drawing.Point(WorldFrame.Width - 30, 151);
                                 }
                                 WorldFrame.Controls.Add(pbL);
                                 Bombs[NextBomb(Bombs)] = pbL;
@@ -746,7 +794,7 @@ namespace BombsAway
             if (!label_Dead.Visible)
             {
                 Score++;
-                BombSize++;
+                //BombSize++; Brian: Keeps bomb size the same so it does not go off the map
                 if (timer_Randombomb.Interval > 1)
                 {
                     timer_Randombomb.Interval--;
@@ -866,6 +914,11 @@ namespace BombsAway
             DebugMenu[8] = this.debug_MSpeed;
             NPC[0] = pb_NPC1;
             NPC[1] = pb_NPC2;
+        }
+
+        private void WorldFrame_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
