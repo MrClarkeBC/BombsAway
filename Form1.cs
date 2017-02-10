@@ -300,7 +300,7 @@ namespace BombsAway
             pb_NPC2.Location = new System.Drawing.Point(WorldFrame.Width-10, WorldFrame.Size.Height - 1 - pb_NPC2.Height);
             pb_Player.Image = Character.stand_r;
             Score = 0;
-            BombSize = 16;
+            //BombSize = 16;
             GameOn = true;
         }
         public void CreateBoom(int x, int y)
@@ -920,24 +920,4 @@ namespace BombsAway
 
         }
     }
-/*
-______██████████████
--____██▓▓▓▓▓▓▓▓▓ M ▓████
--__██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██
--__██████░░░░██░░██████
-██░░░░████░░██░░░░░░░░██
-██░░░░████░░░░██░░░░░░██
--__████░░░░░░██████████
--__██░░░░░░░░░░░░░██
-_____██░░░░░░░░░██
--______██░░░░░░██
--____██▓▓████▓▓▓█
--_██▓▓▓▓▓▓████▓▓█
-██▓▓▓▓▓▓███░░███░
--__██░░░░░░███████
--____██░░░░███████
--______██████████
--_____██▓▓▓▓▓▓▓▓▓██
--_____█████████████
-*/
 }

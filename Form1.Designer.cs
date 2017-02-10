@@ -154,7 +154,7 @@
             this.label_Dead.Name = "label_Dead";
             this.label_Dead.Size = new System.Drawing.Size(91, 13);
             this.label_Dead.TabIndex = 1;
-            this.label_Dead.Text = "I Am Seans Son";
+            this.label_Dead.Text = "You died. Press Space to continue";
             this.label_Dead.Visible = false;
             // 
             // pb_Block1
