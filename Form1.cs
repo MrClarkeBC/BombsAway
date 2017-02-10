@@ -337,7 +337,7 @@ namespace BombsAway
             WorldFrame.Controls.Add(Temp);
         }
 
-        public void CreatePipe(int x)
+        /*public void CreatePipe(int x)
         {   //If you want to add another pipe, wont intersect until added to the WorldObjects array however.
             int y = WorldFrame.Height - 45;
             PictureBox Pipe = new PictureBox();
@@ -348,7 +348,7 @@ namespace BombsAway
             Pipe.Image = World.Pipe;
             Pipe.Location = new System.Drawing.Point(x, y);
             WorldFrame.Controls.Add(Pipe);
-        }
+        }*/
         #endregion
         #region Keyboard
         private void Form1_KeyDown(object sender, KeyEventArgs e)
